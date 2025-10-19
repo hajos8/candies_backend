@@ -38,10 +38,12 @@ describe('Backend', () => {
   })
 
   test('DELETE /candies clears all candies', async () => {
-    // TODO - expect status=200
-
-
-    // TODO - expect body array length=0
-
+    // expect status=200
+    const response = await request(app).delete('/candies')
+    expect(response.status).toBe(200)
+    // statusCode() <-- Csak akkor, ha a backend sendStatus() metódust használt
+ 
+    // expect body array length=0
+    expect(response.body?.length).toBe(undefined)
   })
 })
