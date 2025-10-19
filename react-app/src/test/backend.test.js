@@ -18,11 +18,12 @@ describe('local dummy test', ()=>{
 
 describe('Backend', () => {
   test('GET /candies returns initial candies', async () => {
-    // TODO - expect status=200
+    // expect status=200
+    const response = await request(app).get('/candies')
+    expect(response.status).toBe(200)
 
-
-    // TODO - assert body as array
-
+    // assert body as array
+    expect(Array.isArray(response.body)).toBe(true)
   })
 
   test('POST /candy adds a candy', async () => {
