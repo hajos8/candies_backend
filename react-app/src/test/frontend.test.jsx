@@ -12,30 +12,26 @@ describe('local dummy test', () => {
   })
 })
 
-describe('Candy', () => {
-  test('renders candy details', () => {
-    const candy = <Candy name="TestCandy" mass="100g" origin="HU" />
-    // TODO - render candy
-
-    // TODO - assert name, mass, origin
-
-  })
-})
-
 describe('App', () => {
   test('renders App heading', () => {
-    // TODO - render App
+    // render App
+    render(<App />)
 
-    // TODO - test heading
+    // test heading
+    // expect(screen.getAllByText(/Candies/i))
+    expect(screen.getByRole('heading', {name: /Candies/i})).toBeInTheDocument()
 
   })
 
-  test('allows user to add a new candy', async () => {
-    // TODO - render App
+  test('allows user to add a new candy 1', async () => {
+    // render App
+    render(<App />)
 
-    // TODO - test typing into input fields: New Candy, 150g, US
+    // test typing into input fields: New Candy, 150g, US
+    await userEvent.type(screen.getByPlaceholderText(/Candy name/i), 'Test Candy')
 
-    // TODO - assert Add Candy button click
+    // assert Add Candy button click
+    await userEvent.click(screen.getByRole('button', {name: /Add Candy/i}))
 
-  })  
+  })
 })
