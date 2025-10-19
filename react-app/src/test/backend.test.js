@@ -28,10 +28,12 @@ describe('Backend', () => {
 
   test('POST /candy adds a candy', async () => {
     const newCandy = {name: "Test Candy", mass: "50g", origin: "US"}
-    // TODO - expect status=201
+    // expect status=201
+    const response = await request(app).post('/candy').send(newCandy)
+    expect(response.status).toBe(201)
 
-
-    // TODO - test new record existence
+    // test new record existence
+    expect(response.body.some(candy => candy.name == 'Test Candy')).toBe(true)
 
   })
 
